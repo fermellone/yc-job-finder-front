@@ -1,11 +1,11 @@
 <script setup>
 import { useFetch } from "nuxt/app";
 
-const companies = ref({});
+const companies = ref([]);
 
-const profile =
+const profilePlaceholder =
   "I am a Full stack developer with 4 years of experience using Typescript, Vue.js, Node.js, PostgreSQL, MongoDB, Sveltekit, Tailwind and OpenAI API. The last year I was working with Flutter, Python and OpenAI API. Currently, I'm working as a Team Leader of a 7 people team.";
-const companyDescription =
+const companyDescriptionPlaceholder =
   "I am looking for a startup that I can help to grow faster and that can help me to grow as a professional. Also that helps me to improve my tech skills and my English. I'm open to learn new technologies and to work with small teams.";
 
 const submitForm = async (e) => {
@@ -14,9 +14,8 @@ const submitForm = async (e) => {
   const body = Object.fromEntries(formData);
 
   try {
-    console.log("asd");
     const { data, pending, error, refresh } = await useFetch(
-      "http://localhost:8001",
+      process.env.SERVER_URL,
       {
         method: "POST",
         headers: {
@@ -29,6 +28,7 @@ const submitForm = async (e) => {
     companies.value = data.value.companies;
   } catch (error) {
     console.log(error.message);
+    alert("Something went wrong. Please try again later.");
   }
 };
 </script>
@@ -42,15 +42,13 @@ const submitForm = async (e) => {
       <textarea
         type="text"
         name="profile"
-        placeholder="Describe your profile"
-        >{{ profile }}</textarea
-      >
+        :placeholder="`Describe your profile. Here's an example: ${profilePlaceholder}`"
+      ></textarea>
       <textarea
         type="text"
         name="company-description"
-        placeholder="How should be the company"
-        >{{ companyDescription }}</textarea
-      >
+        :placeholder="`How should be the company. Here's an example: ${companyDescriptionPlaceholder}`"
+      ></textarea>
       <input type="submit" value="Submit" />
     </form>
 
