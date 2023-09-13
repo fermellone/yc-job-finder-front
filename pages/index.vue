@@ -58,11 +58,18 @@ const switchColorMode = () => {
       <!-- Dark mode toggler -->
       <div class="flex justify-end">
         <button
-          class="border-2 font-medium border-dark-slate text-dark-slate dark:border-white dark:text-white px-4 py-2 rounded-md shadow-md"
+          class="border-2 font-medium border-dark-slate text-dark-slate dark:border-white dark:text-white px-4 py-2 rounded-md shadow-md flex justify-center items-center"
           type="button"
           @click="switchColorMode"
         >
-          {{ colorMode.preference }} mode
+          <Icon
+            :name="
+              colorMode.preference == 'light'
+                ? 'iconamoon:mode-light-fill'
+                : 'iconamoon:mode-dark-fill'
+            "
+            size="24"
+          ></Icon>
         </button>
       </div>
     </header>
