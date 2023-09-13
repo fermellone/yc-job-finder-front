@@ -4,6 +4,6 @@
 
 @layer base {
   * {
-    color: #2b2d42;
+    @apply text-slate-800 dark:text-white;
   }
 }
