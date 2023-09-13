@@ -1,8 +1,10 @@
 // import the default theme
-import colors from "tailwindcss/colors"; // In case you want to add the default colors uncoment this import and use them in the theme section
+import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -12,11 +14,11 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-    colors: {
-      primary: "#3b0d91",
-      secondary: "#0077c2",
-      black: "#2b2d42",
-      white: colors.white,
+    extend: {
+      colors: {
+        "blue-green": "#00ddc2",
+        "dark-slate": colors.slate[800],
+      },
     },
   },
   plugins: [],
