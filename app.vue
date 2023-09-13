@@ -1,6 +1,4 @@
 <script setup>
-import { useFetch } from "nuxt/app";
-
 const companies = ref([]);
 
 const profilePlaceholder =
@@ -14,7 +12,7 @@ const submitForm = async (e) => {
   const body = Object.fromEntries(formData);
 
   try {
-    const { data, pending, error, refresh } = await useFetch(
+    const { data, pending, error, refresh } = await fetch(
       process.env.SERVER_URL,
       {
         method: "POST",
