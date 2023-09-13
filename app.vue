@@ -23,14 +23,13 @@ const submitForm = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        profile: profile.value,
-        companyDescription: companyDescription.value,
+        profile: profile.value ?? profilePlaceholder,
+        "company-description":
+          companyDescription.value ?? companyDescriptionPlaceholder,
       }),
     });
 
     const data = await response.json();
-
-    console.log(data);
 
     companies.value = data.companies;
   } catch (error) {
@@ -40,32 +39,64 @@ const submitForm = async (e) => {
     isLoading.value = false;
   }
 };
+
+const isMobileDevice =
+  /Mobile|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(
+    navigator.userAgent
+  );
 </script>
 
 <template>
-  <div>
-    <h1>
-      Find your YC job describing your profile and what you want of a company
+  <main>
+    <h1 class="text-3xl font-bold text-secondary my-2">
+      Find your dream YC Startup Job.
     </h1>
-    <form>
-      <textarea
-        type="text"
-        name="profile"
-        :placeholder="`Describe your profile. Here's an example: ${profilePlaceholder}`"
-        v-model="profile"
-      ></textarea>
-      <textarea
-        type="text"
-        name="company-description"
-        :placeholder="`How should be the company. Here's an example: ${companyDescriptionPlaceholder}`"
-        v-model="companyDescription"
-      ></textarea>
-      <button type="button" @click="submitForm">Submit</button>
+
+    <h2 class="text-xl">
+      You only need to tell us your profile and what would you like your dream
+      startup to have and leave the annoying things our side.
+    </h2>
+    <form class="my-4">
+      <div>
+        <label for="profile">Describe your profile.</label>
+        <textarea
+          type="text"
+          name="profile"
+          :rows="isMobileDevice ? 6 : 10"
+          :placeholder="`Here's an example: ${profilePlaceholder}`"
+          v-model="profile"
+        ></textarea>
+      </div>
+      <div>
+        <label for="company-description"
+          >How should be your dream startup.</label
+        >
+        <textarea
+          type="text"
+          name="company-description"
+          :rows="isMobileDevice ? 6 : 10"
+          :placeholder="`Here's an example: ${companyDescriptionPlaceholder}`"
+          v-model="companyDescription"
+        ></textarea>
+      </div>
+      <div class="w-full flex justify-end items-center">
+        <button
+          class="bg-primary text-white px-4 py-2 rounded-md shadow-md"
+          type="button"
+          @click="submitForm"
+        >
+          Submit
+        </button>
+      </div>
     </form>
 
     <h2 v-if="isLoading">Loading...</h2>
 
-    <section v-else>
+    <section v-else-if="companies.length">
+      <h2 class="mb-4">
+        Here you have some Startups that can fit your interests.
+      </h2>
+
       <article v-for="company in companies">
         <a :href="company.website" target="_blank">
           <h2>{{ company.name }}</h2>
@@ -84,12 +115,23 @@ const submitForm = async (e) => {
         <p>Hiring description: {{ company.hiring_description }}</p>
       </article>
     </section>
-  </div>
+  </main>
 </template>
 
-<style>
+<style lang="postcss">
+main {
+  @apply py-4 px-8;
+}
+
+label {
+  @apply font-medium text-lg;
+}
+
 textarea {
-  width: 100%;
-  height: 100px;
+  @apply w-full focus:outline-none border-2 border-secondary rounded-md p-2 shadow-md;
+}
+
+form > div {
+  @apply mb-4;
 }
 </style>
