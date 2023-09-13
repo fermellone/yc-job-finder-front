@@ -5,16 +5,16 @@ devDependencies:
     specifier: latest
     version: 0.8.3(nuxt@3.7.1)(vite@4.4.9)
   autoprefixer:
-    specifier: ^10.4.15
+    specifier: 10.4.15
     version: 10.4.15(postcss@8.4.29)
   nuxt:
-    specifier: ^3.7.1
+    specifier: 3.7.1
     version: 3.7.1
   postcss:
-    specifier: ^8.4.29
+    specifier: 8.4.29
     version: 8.4.29
   tailwindcss:
-    specifier: ^3.3.3
+    specifier: 3.3.3
     version: 3.3.3
 
 packages:
