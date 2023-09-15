@@ -23,9 +23,9 @@ const submitForm = async (e) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        profile: profile.value ?? profilePlaceholder,
+        profile: profile.value || profilePlaceholder,
         "company-description":
-          companyDescription.value ?? companyDescriptionPlaceholder,
+          companyDescription.value || companyDescriptionPlaceholder,
       }),
     });
 
