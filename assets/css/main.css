@@ -6,4 +6,8 @@
   * {
     @apply text-slate-800 dark:text-white;
   }
+
+  body {
+    @apply bg-white dark:bg-slate-800;
+  }
 }

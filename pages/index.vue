@@ -119,7 +119,7 @@ const switchColorMode = () => {
       <h2 v-if="isLoading">Loading...</h2>
 
       <section v-else-if="companies.length">
-        <h2 class="mb-4">
+        <h2 class="mb-4 text-3xl">
           Here you have some Startups that can fit your interests.
         </h2>
 
@@ -160,5 +160,9 @@ textarea {
 
 form > div {
   @apply mb-4;
+}
+
+article {
+  @apply my-4 border border-white rounded-md p-4 shadow-md;
 }
 </style>
