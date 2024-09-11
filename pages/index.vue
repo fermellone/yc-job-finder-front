@@ -16,6 +16,10 @@ const companyDescriptionPlaceholder =
 
 const submitForm = async (e) => {
 	console.log(appConfig.SERVER_URL);
+	if (!profile.value || !companyDescription.value) {
+		alert('Please fill all the fields.');
+		return;
+	}
 
 	try {
 		isLoading.value = true;
