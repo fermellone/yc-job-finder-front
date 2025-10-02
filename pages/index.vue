@@ -11,9 +11,9 @@ const companyDescription = ref('');
 const isLoading = ref(false);
 
 const profilePlaceholder =
-	"I am a Full stack developer with 4 years of experience using Typescript, Vue.js, Node.js, PostgreSQL, MongoDB, Sveltekit, Tailwind and OpenAI API. The last year I was working with Flutter, Python and OpenAI API. Currently, I'm working as a Team Leader of a 7 people team.";
+	"I am a Full stack developer with 4 years of experience using Typescript, Vue.js, Node.js, PostgreSQL, MongoDB, Sveltekit, Tailwind, and OpenAI API. The last year I was working with Flutter, Python, and OpenAI API. Currently, I'm working as a Team Leader of a 7-person team.";
 const companyDescriptionPlaceholder =
-	"I am looking for a startup that I can help to grow faster and that can help me to grow as a professional. Also that helps me to improve my tech skills and my English. I'm open to learn new technologies and to work with small teams.";
+	"I am looking for a startup that I can help grow faster and that can help me grow as a professional. Also, that helps me to improve my tech skills and my English. I'm open to learn new technologies and to working with small teams.";
 
 const submitForm = async (e) => {
 	console.log(appConfig.SERVER_URL);
